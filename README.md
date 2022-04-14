@@ -13,3 +13,8 @@ learning k8s by prs and issues
 - [#72 Localkube](https://github.com/kubernetes/kubernetes/pull/72/files)
 - [#74 cloudcfg: resize <name> <replicas> command ](https://github.com/kubernetes/kubernetes/pull/74/files)
 - [#77 Expand unit tests, coverage now to 56.9% ](https://github.com/kubernetes/kubernetes/pull/77/files)
+---
+- [#79 Parse settings client-side (addresses #67) ](https://github.com/kubernetes/kubernetes/pull/79/files)
+- [#98 Only manage containers with '--' in the name. Addresses #4 ](https://github.com/kubernetes/kubernetes/pull/98/files)
+- [#99 Improve e2e (improve #3) ](https://github.com/kubernetes/kubernetes/pull/99/files)
+- [#100 Add nice(r) error message on api server panic. Fix nil ptr derefs. ](https://github.com/kubernetes/kubernetes/pull/100/files)
