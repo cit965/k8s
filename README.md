@@ -49,3 +49,7 @@ learning k8s by prs and issues
 - [Cleanup handling of config channels in RunSyncLoop #201](https://github.com/kubernetes/kubernetes/pull/201/files)
 - [Small client refactor; interpret 202 responses #205](https://github.com/kubernetes/kubernetes/pull/205)
 - [Add script to verify all boilerplate; add line to make travis run it. #210](https://github.com/kubernetes/kubernetes/pull/210)
+18
+- [Give api server operation tracking ability #249](https://github.com/kubernetes/kubernetes/pull/249/commits)
+- [Rename cloudcfg to kubecfg #252](https://github.com/kubernetes/kubernetes/pull/252)
+- [Use net.JoinHostPort #258](https://github.com/kubernetes/kubernetes/pull/258/files)
