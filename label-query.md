@@ -3,11 +3,11 @@
 ## PR#130 Move labels and tests to new package
 
 > Pull Request: https://github.com/kubernetes/kubernetes/pull/130/files
+三级标题旁边的commit为参考的提交点，关键代码不一定是这个commit改的，但在这个commit时达到了相对稳定。
 
+### 第一次重构【3b980bd】
 
-### 第一次重构
-
-此处内容以截止提交**3b980bd**的改动为准。这里只关注pkg/labels/labels.go和pkg/labels/query.go的内容，其余相关的改动请参考PR。  
+这里只关注pkg/labels/labels.go和pkg/labels/query.go的内容，其余相关的改动请参考PR。  
 ```
 // labels.go
 
@@ -188,7 +188,7 @@ func (l *queryTerm) String() (out string) {
 ```
 
 这里的代码属实有一点难懂。  
-首先说Query接口，它的Matches方法接收一个Labels作为参数。不管是什么数据结构实现的Labels，Matches具体实现的算法只关心能否Get到键值对。这里体现了设计模式中的依赖倒转原则。
+首先说Query接口，它的Matches方法接收一个Labels作为参数。不管是什么数据结构实现的Labels，Matches具体实现的算法只关心能否Get到键值对。这里体现了设计模式中的依赖倒转原则。  
 然后说queryTerm结构体，这是Query接口的唯一实现。queryTerm的Matches是一个基于多叉树的匹配算法，queryTerm是多叉树的节点。根据Matches算法的实现，不难看出queryTerm可以分化出四种节点。  
 1) 根据Everything方法可知，没有被初始化的queryTerm是一个空query，匹配所有label。
 2) 如果label和value都不为空，queryTerm就可以表达a==b或者a!=b这样的匹配规则，可以把它看作一个叶子节点。
@@ -199,9 +199,9 @@ func (l *queryTerm) String() (out string) {
 
 > 依赖倒转原则：程序要依赖于抽象接口，不要依赖于具体实现。
 
-### 第二次重构
+### 第二次重构【e10e5b9】
 
-此处内容以截止提交**e10e5b9**的改动为准，pkg/labels/labels.go没啥变化，只看pkg/labels/query.go的内容。
+pkg/labels/labels.go没啥变化，只看pkg/labels/query.go的内容。
 ```
 // query.go
 
@@ -314,7 +314,7 @@ func ParseQuery(query string) (Query, error) {
 }
 ```
 
-算法还是那个算法，具体实现变了。
+算法还是那个算法，具体实现变了。  
 原来的queryTerm身兼多重属性，所以它的Matches方法看起来很糊。
-这里的hasTerm/notHasTerm/andTerm都实现了Query接口，hasTerm/notHasTerm是叶子节点，andTerm是And条件节点，很好的体现了单一职责原则。
+这里的hasTerm/notHasTerm/andTerm都实现了Query接口，hasTerm/notHasTerm是叶子节点，andTerm是And条件节点，很好地体现了单一职责原则。  
 And节点的实现依然具备递归（自包含）的特性，基于多叉树的DFS（深度遍历）算法，其复杂度并没有因为设计模式的优化而降低。
