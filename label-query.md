@@ -189,13 +189,13 @@ func (l *queryTerm) String() (out string) {
 
 这里的代码属实有一点难懂。  
 首先说Query接口，它的Matches方法接收一个Labels作为参数。不管是什么数据结构实现的Labels，Matches具体实现的算法只关心能否Get到键值对。这里体现了设计模式中的依赖倒转原则。
-然后说queryTerm结构体，这是Query接口的唯一实现。qeuryTerm的Matches是一个基于多叉树的匹配算法，queryTerm自然是多叉树的节点。根据Matches算法的实现，不难看出queryTerm可以分化出四种节点。  
+然后说queryTerm结构体，这是Query接口的唯一实现。queryTerm的Matches是一个基于多叉树的匹配算法，queryTerm是多叉树的节点。根据Matches算法的实现，不难看出queryTerm可以分化出四种节点。  
 1) 根据Everything方法可知，没有被初始化的queryTerm是一个空query，匹配所有label。
 2) 如果label和value都不为空，queryTerm就可以表达a==b或者a!=b这样的匹配规则，可以把它看作一个叶子节点。
 3) 如果and不为空，queryTerm就是一个And节点，当and中所有queryTerm判定为true，Matches的判定结果才为true。
 4) 如果or不为空，queryTerm就是一个Or节点，当or中有一个queryTerm判定为true，Matches的判定结果就为true。  
 
-从Matches的实现来看，queryTerm的性质只能是这4种节点中的一种。如果你是个叶子节点，就不能再是And节点或Or节点。如果是And节点就不能再是Or节点。根据ParseQuery的实现来看，当前的版本只支持空节点、叶子节点和And节点。算法很简单，实现很拉垮。
+从Matches的实现来看，queryTerm的性质只能是这4种节点中的一种。如果是个叶子节点，就不能再是And节点或Or节点。如果是And节点就不能再是Or节点。根据ParseQuery的实现来看，当前的版本只支持空节点、叶子节点和And节点。算法很简单，实现很拉垮。
 
 > 依赖倒转原则：程序要依赖于抽象接口，不要依赖于具体实现。
 
@@ -317,4 +317,4 @@ func ParseQuery(query string) (Query, error) {
 算法还是那个算法，具体实现变了。
 原来的queryTerm身兼多重属性，所以它的Matches方法看起来很糊。
 这里的hasTerm/notHasTerm/andTerm都实现了Query接口，hasTerm/notHasTerm是叶子节点，andTerm是And条件节点，很好的体现了单一职责原则。
-And节点的实现依然具备递归（自包含）的特性，基于多叉树的算法，其复杂度并没有因为设计模式优化而降低。
+And节点的实现依然具备递归（自包含）的特性，基于多叉树的DFS（深度遍历）算法，其复杂度并没有因为设计模式的优化而降低。
