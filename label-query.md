@@ -2,7 +2,8 @@
 
 ## PR#130 Move labels and tests to new package
 
-> Pull Request: https://github.com/kubernetes/kubernetes/pull/130/files
+> Pull Request: https://github.com/kubernetes/kubernetes/pull/130/files  
+
 三级标题旁边的commit为参考的提交点，关键代码不一定是这个commit改的，但在这个commit时达到了相对稳定。
 
 ### 第一次重构【3b980bd】
