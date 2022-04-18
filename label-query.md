@@ -46,10 +46,10 @@ func (ls Set) Get(label string) string {
 ```
 
 这里将Labels定义为一个接口，而非直接定义为map，随便提上两句。  
-+ 使用Labels的地方只有对label的读操作，因此Labels接口没有定义Set方法，避免在代码中随意修改label。这里也许是开放封闭原则？
-+ 当前Labels的实现只有Set，也就是内置的map。假设哪天要用自定义的数据结构（比如红黑树）存储label，那么实现Labels接口即可，可以避免一些琐碎的改动。  
+当前Labels的实现只有Set，也就是内置的map。假设哪天要用自定义的数据结构（比如红黑树）存储label，那么实现Labels接口即可，可以避免一些琐碎的改动。  
+这里也许是开放封闭原则？ 私以为开放封闭和依赖倒转两条原则，一定程度上是一而二二而一的东西。
 
-> 开放封闭原则：设计模式重要原则之一，即对扩展开放，对修改封闭
+> 开放封闭原则：对扩展开放，对修改封闭。
 
 ```
 // query.go
@@ -188,7 +188,7 @@ func (l *queryTerm) String() (out string) {
 ```
 
 这里的代码属实有一点难懂。  
-首先说Query接口，它的Matches方法接收一个Labels作为参数。不管是什么数据结构实现的Labels，Matches具体实现的算法只关心能否Get到键值对。  
+首先说Query接口，它的Matches方法接收一个Labels作为参数。不管是什么数据结构实现的Labels，Matches具体实现的算法只关心能否Get到键值对。这里体现了设计模式中的依赖倒转原则。
 然后说queryTerm结构体，这是Query接口的唯一实现。qeuryTerm的Matches是一个基于多叉树的匹配算法，queryTerm自然是多叉树的节点。根据Matches算法的实现，不难看出queryTerm可以分化出四种节点。  
 1) 根据Everything方法可知，没有被初始化的queryTerm是一个空query，匹配所有label。
 2) 如果label和value都不为空，queryTerm就可以表达a==b或者a!=b这样的匹配规则，可以把它看作一个叶子节点。
@@ -196,6 +196,8 @@ func (l *queryTerm) String() (out string) {
 4) 如果or不为空，queryTerm就是一个Or节点，当or中有一个queryTerm判定为true，Matches的判定结果就为true。  
 
 从Matches的实现来看，queryTerm的性质只能是这4种节点中的一种。如果你是个叶子节点，就不能再是And节点或Or节点。如果是And节点就不能再是Or节点。根据ParseQuery的实现来看，当前的版本只支持空节点、叶子节点和And节点。算法很简单，实现很拉垮。
+
+> 依赖倒转原则：程序要依赖于抽象接口，不要依赖于具体实现。
 
 ### 第二次重构
 
