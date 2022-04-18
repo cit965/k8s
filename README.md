@@ -27,3 +27,25 @@ learning k8s by prs and issues
 - [Add load balancing support to services. #135](https://github.com/kubernetes/kubernetes/pull/135/files)
 - [Normalize etcd_registry's storage & error handling #138](https://github.com/kubernetes/kubernetes/pull/138/files)
 - [Build Kubernetes in Docker #141](https://github.com/kubernetes/kubernetes/pull/141/files)
+---
+15
+- [Refactor controller manager.#144](https://github.com/kubernetes/kubernetes/pull/144/files)
+- [Part #1 of synchronous requests: Add channels and a mechanism for waiting #166](https://github.com/kubernetes/kubernetes/pull/166)
+- [Wire in the pod cache. Just used for List for now. #171](https://github.com/kubernetes/kubernetes/pull/171)
+- [Letting kubelet retrieve container stats from cAdvisor #174](https://github.com/kubernetes/kubernetes/pull/174)
+- [Add config dir support to kubelet #173](https://github.com/kubernetes/kubernetes/pull/173)
+---
+16
+- [Adding support for external mounts #178](https://github.com/kubernetes/kubernetes/pull/178)
+- [Build runtime Docker images. #179](https://github.com/kubernetes/kubernetes/pull/179/files)
+- [Make minions first class citizens #180](https://github.com/kubernetes/kubernetes/pull/180)
+- [Update IP assignment to be per-pod, not per-container](https://github.com/kubernetes/kubernetes/pull/182)
+- [pkg/client: refactor tests #183](https://github.com/kubernetes/kubernetes/pull/183)
+---
+17
+- [Make api able to marshal its types correctly#196](https://github.com/kubernetes/kubernetes/pull/196)
+- [Add unit test for cloudcfg.LoadAuthInfo #197](https://github.com/kubernetes/kubernetes/pull/197)
+- [Add a 'k8s' prefix to docker containers that we manage #200](https://github.com/kubernetes/kubernetes/pull/200/files)
+- [Cleanup handling of config channels in RunSyncLoop #201](https://github.com/kubernetes/kubernetes/pull/201/files)
+- [Small client refactor; interpret 202 responses #205](https://github.com/kubernetes/kubernetes/pull/205)
+- [Add script to verify all boilerplate; add line to make travis run it. #210](https://github.com/kubernetes/kubernetes/pull/210)
