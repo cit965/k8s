@@ -53,7 +53,7 @@ learning k8s by prs and issues
 - [Give api server operation tracking ability #249](https://github.com/kubernetes/kubernetes/pull/249/commits)
 - [Rename cloudcfg to kubecfg #252](https://github.com/kubernetes/kubernetes/pull/252)
 - [Use net.JoinHostPort #258](https://github.com/kubernetes/kubernetes/pull/258/files)
-
+---
 21
 - [Solved data races in pkg/registry #306](https://github.com/kubernetes/kubernetes/pull/306)
 - [All PUTs now atomic #307](https://github.com/kubernetes/kubernetes/pull/307)
