@@ -60,6 +60,6 @@ learning k8s by prs and issues
 - [Break the dep from util -> api #308](https://github.com/kubernetes/kubernetes/pull/308)
 - [fix data races in controller #309](https://github.com/kubernetes/kubernetes/pull/309)
 - [Fileserver #313](https://github.com/kubernetes/kubernetes/pull/313)
-- [Fix interface{} in api/types #318](https://github.com/kubernetes/kubernetes/pulls?page=9&q=is%3Apr+sort%3Acreated-asc+is%3Aclosed)
+- [Fix interface{} in api/types #318](https://github.com/kubernetes/kubernetes/pull/318)
 - [Initial add of an environment variable for the kubernetes master. #319](https://github.com/kubernetes/kubernetes/pull/319)
 - [Make each pod synchronization in the kubelet an independent thread. #320](https://github.com/kubernetes/kubernetes/pull/320)
