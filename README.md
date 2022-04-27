@@ -73,3 +73,11 @@ learning k8s by prs and issues
 - [Fix interface{} in api/types #318](https://github.com/kubernetes/kubernetes/pull/318)
 - [Initial add of an environment variable for the kubernetes master. #319](https://github.com/kubernetes/kubernetes/pull/319)
 - [Make each pod synchronization in the kubelet an independent thread. #320](https://github.com/kubernetes/kubernetes/pull/320)
+
+---
+27
+- [Initial framework for external volumes. #452](https://github.com/kubernetes/kubernetes/pull/452/files)
+- [Move logger to own package; clean up apiserver to use serve mux. #475](https://github.com/kubernetes/kubernetes/pull/475)
+- [Add a caching minion registry. #483](https://github.com/kubernetes/kubernetes/pull/483)
+- [Make RESTful operations return 404 Not Found when the target resource does not exist. #486](https://github.com/kubernetes/kubernetes/pull/486)
+- [Add websocket dep & watch api support #493](https://github.com/kubernetes/kubernetes/pull/493)
