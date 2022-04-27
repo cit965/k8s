@@ -54,6 +54,16 @@ learning k8s by prs and issues
 - [Rename cloudcfg to kubecfg #252](https://github.com/kubernetes/kubernetes/pull/252)
 - [Use net.JoinHostPort #258](https://github.com/kubernetes/kubernetes/pull/258/files)
 ---
+19
+- [Implement client polling.#259](https://github.com/kubernetes/kubernetes/pull/259)
+- [Watch and Get on the same Etcd key.#262](https://github.com/kubernetes/kubernetes/pull/262)
+- [Use etcd compare and swap to update the list of pods, to remove a race. #265](https://github.com/kubernetes/kubernetes/pull/265)
+- [Generic atomic update code.#269](https://github.com/kubernetes/kubernetes/pull/269)
+- [Add sync behavior to the pod registry. Expand tests.#277](https://github.com/kubernetes/kubernetes/pull/277)
+- [Allow empty lists when polling manifests via http#282](https://github.com/kubernetes/kubernetes/pull/282)
+- [Separate scheduler from registry.#286](https://github.com/kubernetes/kubernetes/pull/286)
+
+---
 21
 - [Solved data races in pkg/registry #306](https://github.com/kubernetes/kubernetes/pull/306)
 - [All PUTs now atomic #307](https://github.com/kubernetes/kubernetes/pull/307)
